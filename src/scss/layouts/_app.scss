@@ -1,0 +1,65 @@
+@import "../_stylebase.scss";
+
+$header-height: 10vmin;
+
+.app {
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__header {
+    height: $header-height;
+    background-color: $color_background;
+    color: $color_text;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__page {
+    flex-grow: 1;
+    background-color: $color_black;
+    color: $color_text;
+  }
+
+  &__logo {
+    height: $header-height;
+    pointer-events: none;
+    margin-right: $size * 2;
+    animation: app-logo-spin infinite ($transition_duration * 20) $transition_timing-function;
+
+    @include xs {
+      margin-right: $size;
+      animation: none;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: row;
+    align-self: stretch;
+
+    > li {
+      align-self: center;
+
+      a {
+        text-transform: uppercase;
+        font-size: 20px;
+        @include link-style($color_link, $color_link_hover);
+
+        @include xs {
+          font-size: 13px;
+        }
+      }
+
+      &:not(:last-child) {
+        margin-right: $size * 4;
+
+        @include xs {
+          margin-right: $size * 2;
+        }
+      }
+    }
+  }
+}
